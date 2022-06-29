@@ -41,7 +41,7 @@ cd MY_PROJECT
 
 #### Latest DEVELOPMENT version (Drupal 9 2.x)
 ```
-composer create-project ycloudyusa/yusaopeny-project:9.2.x-development-dev MY_PROJECT --no-interaction --no-dev
+composer create-project ycloudyusa/yusaopeny-project:9.2.x-dev MY_PROJECT --no-interaction --no-dev
 cd MY_PROJECT
 ```
 
@@ -56,7 +56,7 @@ You should use composer command without `--no-dev` if you would like to get envi
 So it should look like this:
 
 ```
-composer create-project ycloudyusa/yusaopeny-project:9.2.x-development-dev MY_PROJECT --no-interaction
+composer create-project ycloudyusa/yusaopeny-project:9.2.x-dev MY_PROJECT --no-interaction
 cd MY_PROJECT
 ```
 
