@@ -14,6 +14,9 @@
         "consolidation/robo": "^1.1.5 || ^2",
         "drush/drush": "^10.5.0 || ^11"
     },
+    "replace": {
+        "ymcatwincities/openy-project": "*"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
