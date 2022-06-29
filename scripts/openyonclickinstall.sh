@@ -1,20 +1,20 @@
 #!/bin/bash
 # To get the latest stable OpenY on DigitalOcean 16.04 LTS x64, 18.04LTS x64, or 20.04LTS x64 droplet run the command:
-#   curl -Ls http://bit.ly/initopeny | bash -s
+#   curl -Ls https://raw.githubusercontent.com/YCloudYUSA/yusaopeny-project/9.2.x/scripts/openyonclickinstall.sh | bash -s
 #   or
-#   curl -Ls http://bit.ly/initopeny | bash -s stable
+#   curl -Ls https://raw.githubusercontent.com/YCloudYUSA/yusaopeny-project/9.2.x/scripts/openyonclickinstall.sh | bash -s stable
 # To get the latest dev:
-#   curl -Ls http://bit.ly/initopeny | bash -s dev
+#   curl -Ls https://raw.githubusercontent.com/YCloudYUSA/yusaopeny-project/9.2.x/scripts/openyonclickinstall.sh | bash -s dev
 # To get the latest beta:
-#   curl -Ls http://bit.ly/initopeny | bash -s beta
+#   curl -Ls https://raw.githubusercontent.com/YCloudYUSA/yusaopeny-project/9.2.x/scripts/openyonclickinstall.sh | bash -s beta
 # To get a particular version:
-#   curl -Ls http://bit.ly/initopeny | bash -s 8.1.10
+#   curl -Ls https://raw.githubusercontent.com/YCloudYUSA/yusaopeny-project/9.2.x/scripts/openyonclickinstall.sh | bash -s 8.1.10
 # To get a particular branch:
-#   curl -Ls http://bit.ly/initopeny | bash -s dev-BRANCH_NAME
+#   curl -Ls https://raw.githubusercontent.com/YCloudYUSA/yusaopeny-project/9.2.x/scripts/openyonclickinstall.sh | bash -s dev-BRANCH_NAME
 # as root user
 #
 # To get Virtual Y
-#   curl -Ls https://openy.org/l/virtualy | bash -s virtualy
+#   curl -Ls https://raw.githubusercontent.com/YCloudYUSA/yusaopeny-project/9.2.x/scripts/openyonclickinstall.sh | bash -s virtualy
 #
 
 OPENYBETA="9.2.*@beta"
@@ -82,7 +82,7 @@ sudo mv /var/www/html /var/www/html.bak || true
 
 #COMPOSER_MEMORY_LIMIT=-1 composer self-update
 COMPOSER_MEMORY_LIMIT=-1 composer global require zaporylie/composer-drupal-optimizations
-COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:9.2.x-dev /var/www/html --no-interaction -v --profile
+COMPOSER_MEMORY_LIMIT=-1 composer create-project ycloudyusa/yusaopeny-project:9.2.x-dev /var/www/html --no-interaction -v --profile
 cd /var/www/html/
 
 IP="$(ip addr show dev eth0 | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
@@ -100,8 +100,8 @@ if [[ "$OPENYVERSION" == "stable" ]]; then
   printf "\n\n\n\n\n\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n\n\n\n\n\n"
 elif [[ "$OPENYVERSION" == "dev" ]]; then
   echo "Installing Latest Dev Open Y"
-  COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
-  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYDEV} --update-with-dependencies --prefer-dist
+  COMPOSER_MEMORY_LIMIT=-1 composer remove ycloudyusa/yusaopeny --no-update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ycloudyusa/yusaopeny:${OPENYDEV} --update-with-dependencies --prefer-dist
   COMPOSER_MEMORY_LIMIT=-1 composer update
   cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
   sudo mkdir /var/www/html/docroot/sites/default/files
@@ -130,8 +130,8 @@ elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   
 elif [[ "$OPENYVERSION" == "beta" ]]; then
   echo "Installing Latest Beta Open Y"
-  COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
-  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYBETA} --update-with-dependencies --prefer-dist
+  COMPOSER_MEMORY_LIMIT=-1 composer remove ycloudyusa/yusaopeny --no-update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ycloudyusa/yusaopeny:${OPENYBETA} --update-with-dependencies --prefer-dist
 
   cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
   sudo mkdir /var/www/html/docroot/sites/default/files
@@ -142,8 +142,8 @@ elif [[ "$OPENYVERSION" == "beta" ]]; then
   printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 else
   echo "Installing Open Y $OPENYVERSION"
-  COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
-  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies --prefer-dist
+  COMPOSER_MEMORY_LIMIT=-1 composer remove ycloudyusa/yusaopeny --no-update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ycloudyusa/yusaopeny:${OPENYVERSION} --update-with-dependencies --prefer-dist
 
   cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
   sudo mkdir /var/www/html/docroot/sites/default/files
