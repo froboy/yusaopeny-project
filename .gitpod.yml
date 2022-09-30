@@ -1,6 +1,7 @@
 tasks:
   - before: |
       bash <(curl -fsSL https://get.docksal.io)
-      sudo apt-get update
-      sudo apt-get rsync
-    init: fin init
+      sudo apt install rsync -y
+    init: |
+      composer install
+      fin init
