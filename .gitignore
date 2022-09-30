@@ -1,0 +1,9 @@
+# This file should be removed before starting your project
+.vscode
+.editorconfig
+.gitattributes
+
+docroot
+vendor
+
+composer.lock
