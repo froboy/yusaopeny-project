@@ -1,1 +1,6 @@
-image: docksal/cli:php8.0
+tasks:
+  - before: |
+      bash <(curl -fsSL https://get.docksal.io)
+      sudo apt-get update
+      sudo apt-get rsync
+    init: fin init
